@@ -82,23 +82,32 @@
                     </div>
                     <group>
                         <group>
+                            <field name="order_id" readonly="1" groups="stock_request.group_stock_request_order"/>
                             <field name="product_id"/>
                             <field name="expected_date"/>
                             <field name="picking_policy"/>
                         </group>
                         <group>
                             <field name="warehouse_id" widget="selection" groups="stock.group_stock_multi_locations"/>
-                            <field name="product_uom_id"
-                                   options="{'no_open': True, 'no_create': True}" groups="product.group_uom"/>
-                            <field name="location_id" groups="stock.group_stock_multi_locations"/>
+                            <field name="location_id" groups="stock.group_stock_multi_locations"
+                                   domain="['|', ('company_id', '=', company_id), ('company_id', '=', False)]"/>
                             <field name="route_id"
                                    options="{'no_create': True}" groups="stock.group_stock_multi_locations"/>
+                            <field name="route_ids" invisible="1"/>
                             <field name="procurement_group_id"
                                    groups="stock.group_adv_location"/>
                             <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
                         </group>
                         <group name="quantities">
-                            <field name="product_uom_qty"/>
+                            <label for="product_uom_qty"/>
+                            <div>
+                                <field name="product_uom_qty"
+                                       class="oe_inline"/>
+                                <field name="product_uom_id"
+                                       class="oe_inline"
+                                       options="{'no_open': True, 'no_create': True}"
+                                       groups="product.group_uom"/>
+                            </div>
                             <field name="qty_in_progress" />
                             <field name="qty_done" />
                         </group>
@@ -127,17 +136,5 @@
           </p>
         </field>
     </record>
-
-    <menuitem
-        id="menu_stock_request_root"
-        name="Stock Requests"
-        groups="stock_request.group_stock_request_user,stock_request.group_stock_request_manager"
-        sequence="100"/>
-
-    <menuitem
-        id="menu_stock_request"
-        action="action_stock_request_form"
-        name="Stock Requests" parent="menu_stock_request_root"
-        sequence="10"/>
 
 </odoo>
