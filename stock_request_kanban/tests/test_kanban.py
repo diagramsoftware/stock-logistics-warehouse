@@ -2,12 +2,11 @@
 # Copyright 2017 Eficent Business and IT Consulting Services, S.L.
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl.html).
 
-from odoo.tests.common import TransactionCase
 from odoo.exceptions import ValidationError
-from reportlab.graphics.barcode import getCodes
+from .base_test import TestBaseKanban
 
 
-class TestKanban(TransactionCase):
+class TestKanban(TestBaseKanban):
 
     def setUp(self):
         super().setUp()
@@ -21,6 +20,11 @@ class TestKanban(TransactionCase):
         })
         self.wh2 = self.env['stock.warehouse'].search(
             [('company_id', '=', self.company_2.id)], limit=1)
+        self.wh3 = self.env['stock.warehouse'].create({
+            'name': 'Warehouse TEst',
+            'code': 'WH-TEST',
+            'company_id': self.main_company.id,
+        })
 
         self.ressuply_loc = self.env['stock.location'].create({
             'name': 'Ressuply',
@@ -57,6 +61,8 @@ class TestKanban(TransactionCase):
             'company_id': self.main_company.id,
             'propagate': 'False',
         })
+        self.env['ir.config_parameter'].set_param(
+            'stock_request_kanban.crc', '1')
 
     def test_onchanges(self):
         kanban = self.env['stock.request.kanban'].new({})
@@ -97,9 +103,9 @@ class TestKanban(TransactionCase):
             'product_id': self.product.id,
             'product_uom_id': self.product.uom_id.id,
             'product_uom_qty': 1,
-            'company_id': self.company_2.id,
-            'warehouse_id': self.wh2.id,
-            'location_id': self.wh2.lot_stock_id.id,
+            'company_id': self.main_company.id,
+            'warehouse_id': self.wh3.id,
+            'location_id': self.wh3.lot_stock_id.id,
         })
         order = self.env['stock.request.order'].create({
             'company_id': self.main_company.id,
@@ -139,6 +145,11 @@ class TestKanban(TransactionCase):
             'product_uom_id': self.product.uom_id.id,
             'product_uom_qty': 1,
         })
+        kanban_3 = self.env['stock.request.kanban'].create({
+            'product_id': self.product.id,
+            'product_uom_id': self.product.uom_id.id,
+            'product_uom_qty': 1,
+        })
         wizard = self.env['wizard.stock.request.kanban'].with_context(
         ).create({})
         with self.assertRaises(ValidationError):
@@ -158,9 +169,15 @@ class TestKanban(TransactionCase):
         self.assertTrue(self.env['stock.request'].search(
             [('kanban_id', '=', kanban_2.id)])
         )
-
-    def pass_code(self, wizard, code):
-        bcc = getCodes()[wizard.get_barcode_format()](value=code)
-        bcc.validate()
-        bcc.encode()
-        wizard.on_barcode_scanned(bcc.encoded[1:-1])
+        with self.assertRaises(ValidationError):
+            wizard.on_barcode_scanned(kanban_3.name)
+        self.assertFalse(self.env['stock.request'].search(
+            [('kanban_id', '=', kanban_3.id)])
+        )
+        self.env['ir.config_parameter'].set_param(
+            'stock_request_kanban.crc', '0')
+        wizard.on_barcode_scanned(kanban_3.name)
+        self.assertEqual(wizard.status_state, 0)
+        self.assertTrue(self.env['stock.request'].search(
+            [('kanban_id', '=', kanban_3.id)])
+        )

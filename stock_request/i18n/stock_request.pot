@@ -30,8 +30,39 @@ msgid "Allocated Quantity"
 msgstr ""
 
 #. module: stock_request
+#: model:ir.ui.view,arch_db:stock_request.res_config_settings_view_form
+msgid "Allow All Locations Types"
+msgstr ""
+
+#. module: stock_request
+#: model:ir.model.fields,field_description:stock_request.field_res_company_stock_request_allow_virtual_loc
+#: model:ir.model.fields,field_description:stock_request.field_res_config_settings_stock_request_allow_virtual_loc
+#: model:ir.model.fields,field_description:stock_request.field_stock_request_abstract_allow_virtual_location
+#: model:ir.model.fields,field_description:stock_request.field_stock_request_allow_virtual_location
+#: model:ir.model.fields,field_description:stock_request.field_stock_request_kanban_allow_virtual_location
+#: model:ir.model.fields,field_description:stock_request.field_stock_request_order_allow_virtual_location
+msgid "Allow Virtual locations on Stock Requests"
+msgstr ""
+
+#. module: stock_request
+#: model:ir.ui.view,arch_db:stock_request.res_config_settings_view_form
+msgid "Analytic"
+msgstr ""
+
+#. module: stock_request
+#: model:ir.ui.view,arch_db:stock_request.res_config_settings_view_form
+msgid "Analytic accounting in Stock Requests"
+msgstr ""
+
+#. module: stock_request
+#: model:ir.ui.view,arch_db:stock_request.stock_request_order_search
 #: model:ir.ui.view,arch_db:stock_request.stock_request_search
 msgid "Archived"
+msgstr ""
+
+#. module: stock_request
+#: model:ir.ui.view,arch_db:stock_request.res_config_settings_view_form
+msgid "By default only internal and transit locations are allowed in Stock Request and Orders."
 msgstr ""
 
 #. module: stock_request
@@ -41,6 +72,8 @@ msgid "Cancel"
 msgstr ""
 
 #. module: stock_request
+#: model:ir.ui.view,arch_db:stock_request.stock_request_order_search
+#: model:ir.ui.view,arch_db:stock_request.stock_request_search
 #: selection:stock.request,state:0
 #: selection:stock.request.order,state:0
 msgid "Cancelled"
@@ -49,6 +82,11 @@ msgstr ""
 #. module: stock_request
 #: model:ir.actions.act_window,help:stock_request.action_stock_request_form
 msgid "Click to add a Stock Request."
+msgstr ""
+
+#. module: stock_request
+#: model:ir.model,name:stock_request.model_res_company
+msgid "Companies"
 msgstr ""
 
 #. module: stock_request
@@ -61,7 +99,7 @@ msgid "Company"
 msgstr ""
 
 #. module: stock_request
-#: code:addons/stock_request/models/stock_request.py:170
+#: code:addons/stock_request/models/stock_request.py:180
 #, python-format
 msgid "Company must be equal to the order"
 msgstr ""
@@ -114,9 +152,16 @@ msgid "Done"
 msgstr ""
 
 #. module: stock_request
+#: model:ir.ui.view,arch_db:stock_request.stock_request_order_search
+#: model:ir.ui.view,arch_db:stock_request.stock_request_search
 #: selection:stock.request,state:0
 #: selection:stock.request.order,state:0
 msgid "Draft"
+msgstr ""
+
+#. module: stock_request
+#: model:ir.ui.view,arch_db:stock_request.res_config_settings_view_form
+msgid "Enable Analytic Accounting in Stock Requests"
 msgstr ""
 
 #. module: stock_request
@@ -141,12 +186,19 @@ msgid "Expected Date"
 msgstr ""
 
 #. module: stock_request
-#: code:addons/stock_request/models/stock_request.py:177
+#: code:addons/stock_request/models/stock_request.py:187
 #, python-format
 msgid "Expected date must be equal to the order"
 msgstr ""
 
 #. module: stock_request
+#: model:ir.ui.view,arch_db:stock_request.stock_request_order_search
+#: model:ir.ui.view,arch_db:stock_request.stock_request_search
+msgid "Finished"
+msgstr ""
+
+#. module: stock_request
+#: model:ir.ui.view,arch_db:stock_request.stock_request_order_search
 #: model:ir.ui.view,arch_db:stock_request.stock_request_search
 msgid "Group By"
 msgstr ""
@@ -160,8 +212,14 @@ msgstr ""
 #: model:ir.model.fields,field_description:stock_request.field_stock_request_abstract_id
 #: model:ir.model.fields,field_description:stock_request.field_stock_request_allocation_id
 #: model:ir.model.fields,field_description:stock_request.field_stock_request_id
-#: model:ir.model.fields,field_description:stock_request.field_stock_request_order_id_5241
+#: model:ir.model.fields,field_description:stock_request.field_stock_request_order_id_5896
 msgid "ID"
+msgstr ""
+
+#. module: stock_request
+#: model:ir.ui.view,arch_db:stock_request.stock_request_order_search
+#: model:ir.ui.view,arch_db:stock_request.stock_request_search
+msgid "In Progress"
 msgstr ""
 
 #. module: stock_request
@@ -217,12 +275,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:stock_request.field_stock_request_kanban_location_id
 #: model:ir.model.fields,field_description:stock_request.field_stock_request_location_id
 #: model:ir.model.fields,field_description:stock_request.field_stock_request_order_location_id
+#: model:ir.ui.view,arch_db:stock_request.stock_request_order_search
 #: model:ir.ui.view,arch_db:stock_request.stock_request_search
 msgid "Location"
 msgstr ""
 
 #. module: stock_request
-#: code:addons/stock_request/models/stock_request.py:153
+#: code:addons/stock_request/models/stock_request.py:163
 #, python-format
 msgid "Location must be equal to the order"
 msgstr ""
@@ -255,13 +314,13 @@ msgid "Name must be unique"
 msgstr ""
 
 #. module: stock_request
-#: code:addons/stock_request/models/stock_request_order.py:255
+#: code:addons/stock_request/models/stock_request_order.py:263
 #, python-format
 msgid "Only orders on draft state can be unlinked"
 msgstr ""
 
 #. module: stock_request
-#: code:addons/stock_request/models/stock_request.py:314
+#: code:addons/stock_request/models/stock_request.py:333
 #, python-format
 msgid "Only requests on draft state can be unlinked"
 msgstr ""
@@ -283,7 +342,7 @@ msgstr ""
 
 #. module: stock_request
 #: model:ir.ui.view,arch_db:stock_request.res_config_settings_view_form
-msgid "Orders"
+msgid "Orders &amp; Configuration"
 msgstr ""
 
 #. module: stock_request
@@ -311,7 +370,7 @@ msgid "Procurement Rule"
 msgstr ""
 
 #. module: stock_request
-#: code:addons/stock_request/models/stock_request.py:163
+#: code:addons/stock_request/models/stock_request.py:173
 #, python-format
 msgid "Procurement group must be equal to the order"
 msgstr ""
@@ -337,6 +396,11 @@ msgid "Purchases"
 msgstr ""
 
 #. module: stock_request
+#: model:ir.model.fields,field_description:stock_request.field_stock_request_qty_cancelled
+msgid "Qty Cancelled"
+msgstr ""
+
+#. module: stock_request
 #: model:ir.model.fields,field_description:stock_request.field_stock_request_qty_done
 msgid "Qty Done"
 msgstr ""
@@ -351,6 +415,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:stock_request.field_stock_request_kanban_product_uom_qty
 #: model:ir.model.fields,field_description:stock_request.field_stock_request_product_uom_qty
 msgid "Quantity"
+msgstr ""
+
+#. module: stock_request
+#: model:ir.model.fields,help:stock_request.field_stock_request_qty_cancelled
+msgid "Quantity cancelled"
 msgstr ""
 
 #. module: stock_request
@@ -436,7 +505,7 @@ msgid "Requested by"
 msgstr ""
 
 #. module: stock_request
-#: code:addons/stock_request/models/stock_request.py:139
+#: code:addons/stock_request/models/stock_request.py:149
 #, python-format
 msgid "Requested by must be equal to the order"
 msgstr ""
@@ -531,6 +600,7 @@ msgstr ""
 #. module: stock_request
 #: model:ir.actions.act_window,name:stock_request.stock_request_order_action
 #: model:ir.ui.menu,name:stock_request.stock_request_order_menu
+#: model:ir.ui.view,arch_db:stock_request.stock_request_order_search
 msgid "Stock Request Orders"
 msgstr ""
 
@@ -565,8 +635,18 @@ msgid "Stock Requests"
 msgstr ""
 
 #. module: stock_request
+#: model:ir.model.fields,field_description:stock_request.field_res_config_settings_module_stock_request_analytic
+msgid "Stock Requests Analytic integration"
+msgstr ""
+
+#. module: stock_request
 #: model:ir.model.fields,field_description:stock_request.field_res_config_settings_module_stock_request_kanban
 msgid "Stock Requests Kanban integration"
+msgstr ""
+
+#. module: stock_request
+#: model:ir.ui.view,arch_db:stock_request.stock_request_order_search
+msgid "Stock Requests Order Search"
 msgstr ""
 
 #. module: stock_request
@@ -592,13 +672,13 @@ msgstr ""
 
 #. module: stock_request
 #: code:addons/stock_request/models/stock_move.py:38
-#: code:addons/stock_request/models/stock_request_order.py:272
+#: code:addons/stock_request/models/stock_request_order.py:280
 #, python-format
 msgid "The company of the stock request must match with that of the location."
 msgstr ""
 
 #. module: stock_request
-#: code:addons/stock_request/models/stock_request_order.py:263
+#: code:addons/stock_request/models/stock_request_order.py:271
 #, python-format
 msgid "The company of the stock request must match with that of the warehouse."
 msgstr ""
@@ -610,9 +690,15 @@ msgid "The following requested items from Stock Request %s have now been receive
 msgstr ""
 
 #. module: stock_request
-#: code:addons/stock_request/models/stock_request.py:187
+#: code:addons/stock_request/models/stock_request.py:197
 #, python-format
 msgid "The picking policy must be equal to the order"
+msgstr ""
+
+#. module: stock_request
+#: code:addons/stock_request/models/stock_request_order.py:289
+#, python-format
+msgid "This action only works in the context of products"
 msgstr ""
 
 #. module: stock_request
@@ -627,7 +713,7 @@ msgid "Transfers"
 msgstr ""
 
 #. module: stock_request
-#: code:addons/stock_request/models/stock_request_order.py:302
+#: code:addons/stock_request/models/stock_request_order.py:310
 #, python-format
 msgid "Unfortunately it seems you do not have the necessary rights for creating stock requests. Please contact your administrator."
 msgstr ""
@@ -653,12 +739,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:stock_request.field_stock_request_kanban_warehouse_id
 #: model:ir.model.fields,field_description:stock_request.field_stock_request_order_warehouse_id
 #: model:ir.model.fields,field_description:stock_request.field_stock_request_warehouse_id
+#: model:ir.ui.view,arch_db:stock_request.stock_request_order_search
 #: model:ir.ui.view,arch_db:stock_request.stock_request_search
 msgid "Warehouse"
 msgstr ""
 
 #. module: stock_request
-#: code:addons/stock_request/models/stock_request.py:146
+#: code:addons/stock_request/models/stock_request.py:156
 #, python-format
 msgid "Warehouse must be equal to the order"
 msgstr ""
@@ -694,31 +781,31 @@ msgid "You cannot change the company of the warehouse, as it is already assigned
 msgstr ""
 
 #. module: stock_request
-#: code:addons/stock_request/models/stock_request_abstract.py:134
+#: code:addons/stock_request/models/stock_request_abstract.py:138
 #, python-format
 msgid "You have entered a location that is assigned to another company."
 msgstr ""
 
 #. module: stock_request
-#: code:addons/stock_request/models/stock_request_abstract.py:129
+#: code:addons/stock_request/models/stock_request_abstract.py:133
 #, python-format
 msgid "You have entered a product that is assigned to another company."
 msgstr ""
 
 #. module: stock_request
-#: code:addons/stock_request/models/stock_request_abstract.py:143
+#: code:addons/stock_request/models/stock_request_abstract.py:147
 #, python-format
 msgid "You have entered a route that is assigned to another company."
 msgstr ""
 
 #. module: stock_request
-#: code:addons/stock_request/models/stock_request_abstract.py:138
+#: code:addons/stock_request/models/stock_request_abstract.py:142
 #, python-format
 msgid "You have entered a warehouse that is assigned to another company."
 msgstr ""
 
 #. module: stock_request
-#: code:addons/stock_request/models/stock_request_abstract.py:153
+#: code:addons/stock_request/models/stock_request_abstract.py:157
 #, python-format
 msgid "You have to select a product unit of measure in the same category than the default unit of measure of the product"
 msgstr ""
